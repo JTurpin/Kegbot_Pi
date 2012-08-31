@@ -1,1 +1,15 @@
-This is the beginngins of the Arduino + Raspberry Pi kegbot. More details in here soon.
+KegPi by Jim Turpin and Aaron Ott
+
+Contained in here is the 3 pieces of code required to keep tabs on the AppliedTrust Kegerator.
+
+1) check.php used by apache to display the keg temps and percentages of kegs left. This is handy for scraping by kegpad, nagios, cacti, etc
+
+2) KegPi\KegPi.pde - The arduino sketch responsible for monitoring temps and flows
+
+3) kegbot.py - The python code running on the Pi to monitor serial communications from the arduino. This script is also responsible for updating the values in the kegstats.txt file
+
+Check_Kegbot.sh - quick script for cron to determine if the python app is running and if not to restart it.
+
+kegsizes.txt - used by check.php to display percentages (a 5 gallong keg = 115200 pulses from the flow meter)
+
+kegstats.txt - comma seperated list of values. temp1, temp2, pulses left for keg1, pulses left for keg 2
