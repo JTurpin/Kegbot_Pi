@@ -4,8 +4,6 @@
 #include <DallasTemperature.h>
 #include <avr/io.h>
 
-// Kegbot arduino sketch by Jim Turpin 8-31-12
-
 // Data wire is plugged into port 2 (digital 8) on the Arduino
 #define ONE_WIRE_BUS 8
 #define TEMPERATURE_PRECISION 9
@@ -20,7 +18,7 @@ DallasTemperature sensors(&oneWire);
 DeviceAddress insideThermometer, outsideThermometer;
 float temp1;
 float temp2;
-int http_trigger = 301; // this is still called http trigger because we used to http, now we serial find and replace if you must
+int http_trigger = 301; // this is still called http trigger because we used to use http, now we serial find and replace if you must
 
 ///  FLOW METER STUFF HERE
 volatile int state = LOW;
@@ -129,3 +127,4 @@ void count_beer2() {
   flow[1] += 1;
   interrupt_triggered = 1;
 }
+
