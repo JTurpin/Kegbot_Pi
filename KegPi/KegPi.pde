@@ -4,6 +4,8 @@
 #include <DallasTemperature.h>
 #include <avr/io.h>
 
+// Kegbot arduino sketch by Jim Turpin 8-31-12
+
 // Data wire is plugged into port 2 (digital 8) on the Arduino
 #define ONE_WIRE_BUS 8
 #define TEMPERATURE_PRECISION 9

@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# Cronjob for checking status of kegbot python app. Can also be used to start script
+
 Num_Instances=`ps ax | grep kegbot | wc -l`
 
 echo $Num_Instances
