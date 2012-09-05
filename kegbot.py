@@ -14,7 +14,7 @@ while 1:
   s = s.rstrip();
   i = s.split(',')
 
-  print i;
+  #print i;
   # check to see that we have all the values from the serial device
 #  if len(i) < 4:
 #    print "noise?";
@@ -39,7 +39,14 @@ while 1:
 
   # Write the string to a file for delivering via apache
   # set the pointer back to the beginning of the file prior to writing it.
-  f.seek(0);
+  f.seek(0)
+  
+  # Truncate everything after the current file position (which should be
+  # everything on the line
+  f.truncate()
+  
+  # Everything has been updated in our list, let's join each item together
+  # with a comma after mapping each item in the list (o) as a string.
   f.write(','.join(map(str,o)))
 
   # Close the file
