@@ -122,10 +122,12 @@ class ATSerialWebSocket extends PHPWebSocket {
           continue;
         }
         if (preg_match('/AA(.*)BB/', $str, $matches)) {
+          $this->wsSendMessageToAll($matches[1]);
           echo $matches[1] . "\n";
           //write_stats($matches[1]);
         }
         if (preg_match('/CC(.*)DD/', $str, $matches)) {
+          $this->wsSendMessageToAll($matches[1]);
           echo "--> " . $matches[1] . "\n";
         }
 
@@ -141,5 +143,12 @@ class ATSerialWebSocket extends PHPWebSocket {
     }
 
     return true; // returned when wsStopServer() is called
+  }
+
+  // send to All Clients
+  function wsSendMessageToAll($message) {
+    foreach ($this->wsClients as $clientID => $client) {
+      $this->wsSend($clientID, $message);
+    }
   }
 }
