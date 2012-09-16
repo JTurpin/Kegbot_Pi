@@ -64,7 +64,9 @@ class ATSerialWebSocket extends PHPWebSocket {
     $nextPingCheck = time() + 1;
     while (isset($this->wsRead[0])) {
       $changed = $this->wsRead;
-      $result = socket_select($changed, $write, $except, 1);
+      
+      // set the timeout to 0 so the return is much faster
+      $result = socket_select($changed, $write, $except, 0);
 
       if ($result === false) {
         socket_close($this->wsRead[0]);
