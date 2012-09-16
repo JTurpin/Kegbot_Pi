@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 // prevent the server from timing out
 set_time_limit(0);
@@ -59,6 +60,7 @@ $Server->bind('open', 'wsOnOpen');
 $Server->bind('close', 'wsOnClose');
 // for other computers to connect, you will probably need to change this to your LAN IP or external IP,
 // alternatively use: gethostbyaddr(gethostbyname($_SERVER['SERVER_NAME']))
-$Server->wsStartServer('127.0.0.1', 9300);
+//$Server->wsStartServer('127.0.0.1', 9300);
+$Server->wsStartServer('192.168.10.133', 9300);
 
 ?>

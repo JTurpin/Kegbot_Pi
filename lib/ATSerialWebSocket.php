@@ -25,6 +25,12 @@ class ATSerialWebSocket extends PHPWebSocket {
       // conf
       $this->sh->confBaudRate(self::SERIAL_BAUD_RATE);
       $this->sh->confParity(self::SERIAL_PARITY);
+
+      if (! $this->sh->deviceOpen("r")) {
+        throw new Exception("Could not open device.");
+      }
+
+
     }
     catch (Exception $e) {
       die($e);
@@ -109,6 +115,7 @@ class ATSerialWebSocket extends PHPWebSocket {
       // Read from the serial port
       $s = $this->sh->readPort();
 
+      $str = '';
       if (strlen($s) > 0 ) {
         $str .= $s;
         if (!strpos($str, 'BB') && !strpos($str, 'DD')) {

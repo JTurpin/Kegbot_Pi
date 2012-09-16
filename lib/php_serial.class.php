@@ -161,10 +161,7 @@ class phpSerial
       return false;
     }
 
-    echo "in deviceOpen 4\n";
-    echo "in deviceOpen device: " . $this->_device . "\n";
     $this->_dHandle = fopen($this->_device, $mode);
-    echo "in deviceOpen 5\n";
 
     if ($this->_dHandle !== false)
     {
