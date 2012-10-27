@@ -1,7 +1,12 @@
+#!/usr/bin/env python
+
 import time
 import serial
 
-ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+#ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+#ser.stopbits = 2 # arduino uses 2 fucking stop bits! http://lnk4.us/1Iop
+#time.sleep(2)
+ser = serial.Serial(port='/dev/ttyUSB0', baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=1)
 
 while 1:
   # read from the serial device
@@ -14,7 +19,7 @@ while 1:
   s = s.rstrip();
   i = s.split(',')
 
-  #print i;
+  print i;
   # check to see that we have all the values from the serial device
 #  if len(i) < 4:
 #    print "noise?";
@@ -24,18 +29,20 @@ while 1:
   f = open('/var/www/kegstats.txt', 'r+')
   # Read in the file so we can do some processing on the last 2 columns
   line = f.readline()
-  #print line;
-
+  
+  print line;
+#  line = line.strip('\x00')
+  line = line.strip()
   # Create another list from the kegstats text file
   o = line.split(',')
-  #print o;
+  print o;
 
   # Set the new temprature
   o[0:2] = i[0:2]
 
   # Update counts
-  o[2] = int(o[2]) - int(i[2])
-  o[3] = int(o[3]) - int(i[3])
+  #o[2] = int(o[2]) - int(i[2])
+  #o[3] = int(o[3]) - int(i[3])
 
   # Write the string to a file for delivering via apache
   # set the pointer back to the beginning of the file prior to writing it.
