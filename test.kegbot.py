@@ -66,7 +66,8 @@ while 1:
 	# we need to track and make sure that we're not reporting multiple times for a single pour
 	
 	# then we talk shit
-	#ircsock.send("PRIVMSG "+ chan +" :"+ msg +"\n")	
+	#msg = "Someone is pouring a beer!";
+	#sendmsg(channel, msg)	
 	
   from time import localtime, strftime
   print i, strftime("%a, %d %b %Y %H:%M:%S +0000", localtime());
