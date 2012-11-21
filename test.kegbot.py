@@ -56,9 +56,9 @@ while 1:
   i = s.split(',')
  
   # Bubble Management goes right here 
-  if(i[2] > 15)
+  if(i[2] > 15):
 	i[2] == 0;
-  if(i[3] > 15)
+  if(i[3] > 15):
 	i[3] == 0;
   
   # lets talk some shit in the chat room

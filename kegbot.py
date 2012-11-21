@@ -17,6 +17,13 @@ while 1:
   # Create a list from the serial input
   s = s.rstrip();
   i = s.split(',')
+
+  # Bubble Management goes right here 
+  if(i[2] > 15):
+        i[2] = 0;
+  if(i[3] > 15):
+        i[3] = 0;
+
   from time import localtime, strftime
   #>>> strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
   print i, strftime("%a, %d %b %Y %H:%M:%S +0000", localtime());
